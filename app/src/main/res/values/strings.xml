@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">DiscussX</string>
+    <string name="intro_app">GREAT APP FOR UNIVERSITY SUBJECTS DISCUSSION</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
     <string name="facebook_app_id">630645550439486</string>
@@ -15,14 +16,36 @@
     <string name="new_pass">New Password</string>
     <string name="title_activity_profile">Firebase</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="title_register">Register</string>
     <string name="hint_email">EMAIL</string>
     <string name="hint_password">PASSWORD</string>
+    <string name="hint_confirm_pass">CONFIRM PASSWORD</string>
     <string name="hint_name">Fullname</string>
     <string name="btn_login">LOGIN</string>
-    <string name="btn_link_to_register">NOT A MEMBER? REGISTER NOW!</string>
-    <string name="btn_link_to_login">Already registered. Login Me!</string>
+    <string name="btn_register">REGISTER</string>
+    <string name="btn_link_to_register">I don\'t have an account yet.</string>
+    <string name="btn_link_to_login">I have already registered.</string>
+
+    //set up personal profile
+    <string name="title_setup_personalprofile">Set Up Your Personal Profile</string>
+    <string name="whatsyourfullname">What is your full name?</string>
+    <string name="hint_fullname">Full Name</string>
+    <string name="whatsyourgender">What is your gender?</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="whatsyourbday">What is your date of birth?</string>
+    <string name="dob">Enter your birthday</string>
+    <string name="whatsyouruni">Which university are you currently studying in?</string>
+
+    <string name="whatsyouracaschool">Which academic school are you in?</string>
+    <string name="whatsyourcourse">Which course are you currently studying?</string>
+    <string name="start_discussing">Start Discussing!</string>
+    <string name="short_desc1">Your profile is successfully set up. Start discussing about your university subjects by joining discussion groups or creating new discussion groups.</string>
+    <string name="join_group">JOIN DISCUSSION GROUP</string>
+    <string name="create_group">CREATE NEW DISCUSSION GROUP</string>
+
     <string name="title_activity_reset_password">ResetPasswordActivity</string>
-    <string name="btn_forgot_password">FORGOT PASSWORD?</string>
+    <string name="btn_forgot_password">Forgot Password?</string>
     <string name="btn_reset_password">Reset Password</string>
     <string name="btn_back"><![CDATA[<< Back]]></string>
     <string name="hint_new_email">New Email</string>
@@ -43,6 +66,8 @@
     <string name="checkbox_currentCourse">Tick me if you\'re studying this course right now</string>
     <string name="add_more_course">Add More Course(s)</string>
     <string name="next_page">Next</string>
+    <item name="visible" type="id" />
+    <item name="masked" type="id" />
     <string-array name="university_name">
         <item>Sunway University</item>
         <item>Sunway College</item>
@@ -97,5 +122,8 @@
         <item>February</item>
         <item>March</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
 

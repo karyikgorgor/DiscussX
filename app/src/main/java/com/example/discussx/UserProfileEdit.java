@@ -1,5 +1,9 @@
 package com.example.discussx;
 
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Spinner;
+
 /**
  * Created by IMCKY on 28-Sep-17.
  */
@@ -7,26 +11,26 @@ package com.example.discussx;
 public class UserProfileEdit {
     private String userID;
     private String fullName;
+    private String gender;
+    private String dob;
     private String university;
-    private String academicLevel;
     private String academicSchool;
     private String courses;
-    private String intakeMonth;
-    private String intakeYear;
+
 
     public UserProfileEdit () {
-
+        
     }
 
-    public UserProfileEdit(String userID, String fullName, String university, String academicLevel, String academicSchool, String courses, String intakeMonth, String intakeYear) {
+    public UserProfileEdit(String userID, String fullName, String gender, String dob, String university, String academicSchool, String courses) {
         this.userID = userID;
         this.fullName = fullName;
+        this.gender = gender;
+        this.dob = dob;
         this.university = university;
-        this.academicLevel = academicLevel;
         this.academicSchool = academicSchool;
         this.courses = courses;
-        this.intakeMonth = intakeMonth;
-        this.intakeYear = intakeYear;
+
     }
 
     public String getUserID () {
@@ -37,12 +41,12 @@ public class UserProfileEdit {
         return fullName;
     }
 
+    public String getGender () { return gender; }
+
+    public String getDob () { return dob; }
+
     public String getUniversity() {
         return university;
-    }
-
-    public String getAcademicLevel() {
-        return academicLevel;
     }
 
     public String getAcademicSchool() {
@@ -53,11 +57,4 @@ public class UserProfileEdit {
         return courses;
     }
 
-    public String getIntakeMonth() {
-        return intakeMonth;
-    }
-
-    public String getIntakeYear() {
-        return intakeYear;
-    }
 }

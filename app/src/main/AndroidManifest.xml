@@ -2,10 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.discussx">
 
-    <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="23" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -21,9 +17,12 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".OpenSplash"
+            android:name=".OpenAppPage"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -32,12 +31,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SignUpActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SignUpActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".UserProfile" />
-        <activity android:name=".FirstUserProfileEdit" />
-        <activity android:name=".SubjectsSuggestion"></activity>
+        <activity android:name=".SubjectsSuggestion" />
+        <activity
+            android:name=".SetUpPersonalProfile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SetUpPersonalProfile2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SetUpPersonalProfile3"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AfterProfileSetUp"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".HomePage"></activity>
     </application>
 
 </manifest>
