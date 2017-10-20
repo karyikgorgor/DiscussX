@@ -87,9 +87,11 @@ public class SetUpPersonalProfile2 extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String email = getIntent().getExtras().getString("email2");
                 String fullName = getIntent().getExtras().getString("fullName1");
                 String gender = getIntent().getExtras().getString("gender1");
                 Intent intent = new Intent(SetUpPersonalProfile2.this, SetUpPersonalProfile3.class);
+                intent.putExtra("email3", email);
                 intent.putExtra("fullName2", fullName);
                 intent.putExtra("gender2", gender);
                 intent.putExtra("dob", displayDate.getText().toString());

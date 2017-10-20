@@ -10,6 +10,7 @@ import android.widget.Spinner;
 
 public class UserProfileEdit {
     private String userID;
+    private String email;
     private String fullName;
     private String gender;
     private String dob;
@@ -22,8 +23,9 @@ public class UserProfileEdit {
         
     }
 
-    public UserProfileEdit(String userID, String fullName, String gender, String dob, String university, String academicSchool, String courses) {
+    public UserProfileEdit(String userID, String email, String fullName, String gender, String dob, String university, String academicSchool, String courses) {
         this.userID = userID;
+        this.email = email;
         this.fullName = fullName;
         this.gender = gender;
         this.dob = dob;
@@ -33,28 +35,69 @@ public class UserProfileEdit {
 
     }
 
-    public String getUserID () {
+    public String getUserID() {
         return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFullName() {
         return fullName;
     }
 
-    public String getGender () { return gender; }
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
-    public String getDob () { return dob; }
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
 
     public String getUniversity() {
         return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
     }
 
     public String getAcademicSchool() {
         return academicSchool;
     }
 
+    public void setAcademicSchool(String academicSchool) {
+        this.academicSchool = academicSchool;
+    }
+
     public String getCourses() {
         return courses;
     }
+
+    public void setCourses(String courses) {
+        this.courses = courses;
+    }
+
 
 }

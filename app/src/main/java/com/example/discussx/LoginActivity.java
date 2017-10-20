@@ -2,6 +2,8 @@ package com.example.discussx;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.renderscript.Sampler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +21,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
@@ -27,7 +35,11 @@ public class LoginActivity extends AppCompatActivity {
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener authStateListener;
-    private Button  btnLogin, btnReset,btnSignup;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference databaseProfile;
+    private Button btnLogin, btnReset,btnSignup;
+    private String userID;
+    private String emailAdd;
 
 
 
@@ -38,16 +50,24 @@ public class LoginActivity extends AppCompatActivity {
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+
 
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {
-                    Intent intent = new Intent (LoginActivity.this, HomePage.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    emailAdd = user.getEmail();
+                    Intent intent = new Intent(LoginActivity.this, AfterProfileSetUp.class);
+                    intent.putExtra("email",emailAdd);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
+                } else {
+                    Toast.makeText(LoginActivity.this, "Unable to login user22", Toast.LENGTH_LONG).show();
                 }
+
             }
         };
 
@@ -105,30 +125,27 @@ public class LoginActivity extends AppCompatActivity {
 
         if( !TextUtils.isEmpty(userEmail) && !TextUtils.isEmpty(userPassword))
         {
-
             auth.signInWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
                     if( task.isSuccessful()) {
 
-                        Intent moveToHome = new Intent(LoginActivity.this, HomePage.class);
-                        moveToHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(moveToHome);
 
-                    } else {
+                    }  else {
                         Toast.makeText(LoginActivity.this, "Unable to login user", Toast.LENGTH_LONG).show();
-
                     }
 
                 }
             });
 
         }else {
-
             Toast.makeText(LoginActivity.this, "Please enter user email and password", Toast.LENGTH_LONG).show();
         }
 
     }
-}
+
+
+    }
+
 

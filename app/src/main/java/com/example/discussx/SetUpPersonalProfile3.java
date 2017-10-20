@@ -142,7 +142,7 @@ public class SetUpPersonalProfile3 extends AppCompatActivity {
             public void onClick(View view) {
                 registerProfile();
                 Intent intent = new Intent (SetUpPersonalProfile3.this, AfterProfileSetUp.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
             }
@@ -151,13 +151,14 @@ public class SetUpPersonalProfile3 extends AppCompatActivity {
     }
 
     private void registerProfile () {
+        String email = getIntent().getExtras().getString("email3");
         String fullName = getIntent().getExtras().getString("fullName2");
         String gender = getIntent().getExtras().getString("gender2");
         String dob = getIntent().getExtras().getString("dob");
         String uni = getIntent().getExtras().getString("university");
         String academicSchool = spinnerAcademicSchool.getSelectedItem().toString();
         String course = spinnerCourse.getSelectedItem().toString();
-        UserProfileEdit userProfileEdit = new UserProfileEdit(userID, fullName, gender,dob,uni,academicSchool, course);
+        UserProfileEdit userProfileEdit = new UserProfileEdit(userID, email, fullName, gender,dob,uni,academicSchool, course);
 
         databaseProfile.child(userID).setValue(userProfileEdit);
     }

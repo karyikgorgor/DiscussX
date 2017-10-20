@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "468059884022-o31421j63u47v3acio9tpdmcef28096l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.discussx",
+            "certificate_hash": "27650a395cee67790ebd4da123ad68f012d867eb"
+          }
+        },
+        {
           "client_id": "468059884022-ebk2aaqvf0b4jjv5ok7itbqpm80bco2u.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

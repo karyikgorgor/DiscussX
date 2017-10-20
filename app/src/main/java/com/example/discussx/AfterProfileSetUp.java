@@ -1,18 +1,15 @@
 package com.example.discussx;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import org.w3c.dom.Text;
 
 public class AfterProfileSetUp extends AppCompatActivity {
     private Button joinGroupLink, createGroupLink;
-    private TextView displayUserName;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,12 +17,28 @@ public class AfterProfileSetUp extends AppCompatActivity {
 
         joinGroupLink = (Button) findViewById(R.id.join_group);
         createGroupLink = (Button) findViewById(R.id.create_group);
-        displayUserName = (TextView) findViewById(R.id.welcome_name);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        if (user!= null) {
-            String name = user.getDisplayName();
-        }
+        joinGroupLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (AfterProfileSetUp.this, JoinGroupActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
+
+        createGroupLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (AfterProfileSetUp.this, CreateGroupActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
     }
+
+
+
 }
+

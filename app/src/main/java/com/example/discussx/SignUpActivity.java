@@ -16,6 +16,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Set;
 
@@ -24,6 +27,10 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText inputEmail, inputPassword, confirmPassword;
     private Button btnSignIn, btnSignUp;
     private FirebaseAuth auth;
+    private String userID;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference databaseProfile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         //Get Firebase auth instance
-        auth = FirebaseAuth.getInstance();
+
 
         btnSignIn = (Button) findViewById(R.id.btn_signin);
         btnSignUp = (Button) findViewById(R.id.btn_register);
@@ -40,7 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
         confirmPassword = (EditText) findViewById(R.id.confirm_pass);
 
 
-
+        auth = FirebaseAuth.getInstance();
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,9 +60,9 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String email = inputEmail.getText().toString().trim();
+                final String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
-                String confirmPassword = inputPassword.getText().toString().trim();
+                String confirmPass = confirmPassword.getText().toString().trim();
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                     return;
@@ -66,36 +73,63 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
+                if (TextUtils.isEmpty(confirmPass)) {
+                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
                 if (password.length() < 6) {
                     Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (!confirmPassword.equals(password)) {
+                if (!confirmPass.equals(password)) {
                     Toast.makeText(getApplicationContext(), "Password does not match!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
 
                 //create user
-                auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                Toast.makeText(SignUpActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
-                                if (!task.isSuccessful()) {
-                                    Toast.makeText(SignUpActivity.this, "Authentication failed." + task.getException(),
-                                            Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Intent intent = new Intent (SignUpActivity.this, SetUpPersonalProfile.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(intent);
-                                    finish();
+                try {
+                    auth.createUserWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    Toast.makeText(SignUpActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                                    // If sign in fails, display a message to the user. If sign in succeeds
+                                    // the auth state listener will be notified and logic to handle the
+                                    // signed in user can be handled in the listener.
+                                    if (!task.isSuccessful()) {
+                                        Toast.makeText(SignUpActivity.this, "Authentication failed." + task.getException(),
+                                                Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        String fullName = "";
+                                        String gender = "";
+                                        String dob = "";
+                                        String uni = "";
+                                        String academicSchool = "";
+                                        String course = "";
+                                        mFirebaseDatabase = FirebaseDatabase.getInstance();
+                                        databaseProfile = FirebaseDatabase.getInstance().getReference("User Profile");
+                                        FirebaseUser user = auth.getCurrentUser();
+                                        userID = user.getUid();
+                                        UserProfileEdit userProfileEdit = new UserProfileEdit(userID, email, fullName, gender,dob,uni,academicSchool, course);
+                                        databaseProfile.child(userID).setValue(userProfileEdit);
+
+                                        Intent intent = new Intent (SignUpActivity.this, SetUpPersonalProfile.class);
+                                        intent.putExtra("email",email);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                        finish();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                } catch (Exception e) {
+                    Toast.makeText(SignUpActivity.this, "Null!!!",
+                            Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });

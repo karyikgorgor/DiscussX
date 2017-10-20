@@ -39,7 +39,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".UserProfile" />
-        <activity android:name=".SubjectsSuggestion" />
         <activity
             android:name=".SetUpPersonalProfile"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -52,7 +51,12 @@
         <activity
             android:name=".AfterProfileSetUp"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HomePage"></activity>
+        <activity android:name=".HomePage" />
+        <activity android:name=".JoinGroupActivity" />
+        <activity android:name=".CreateGroupActivity" />
+        <activity android:name=".DiscussionGroupActivity" />
+        <activity android:name=".NewPost" />
+        <activity android:name=".PostDetailActivity"></activity>
     </application>
 
 </manifest>

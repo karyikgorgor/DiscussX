@@ -48,7 +48,9 @@ public class SetUpPersonalProfile extends AppCompatActivity {
                     if (TextUtils.isEmpty(fullName)) {
                         Toast.makeText(getApplicationContext(), "Enter your name!", Toast.LENGTH_LONG).show();
                     } else {
+                        String email = getIntent().getExtras().getString("email");
                         Intent intent = new Intent(SetUpPersonalProfile.this, SetUpPersonalProfile2.class);
+                        intent.putExtra("email2",email);
                         intent.putExtra("fullName1", editTextFullName.getText().toString().trim());
                         intent.putExtra("gender1",radioButtonGender.getText().toString());
                         startActivity(intent);
