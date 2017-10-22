@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.facebook.login.Login;
+import com.example.discussx.UI.useractivities.LoginActivity;
+import com.example.discussx.UI.useractivities.SignUpActivity;
 
 public class OpenAppPage extends AppCompatActivity {
 

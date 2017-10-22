@@ -1,4 +1,13 @@
 <resources>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="loading">Loading</string>
+    <string name="web_client_id">635216470603-t4jl5ogm22rcsgfpujo3oism3dt8feer.apps.googleusercontent.com</string>
+
+
     <string name="app_name">DiscussX</string>
     <string name="intro_app">GREAT APP FOR UNIVERSITY SUBJECTS DISCUSSION</string>
     <string name="edit_message">Enter a message</string>
@@ -46,13 +55,17 @@
 
     <string name="join_group2">Join Discussion Group</string>
     <string name="create_group2">Create New Discussion Group</string>
+
     <string name="ask_group_name">GROUP NAME</string>
     <string name="create_group_btn">CREATE</string>
+    <string name="join_group_btn">JOIN</string>
     <string name="post">Post</string>
     <string name="create_post_title">Create Post</string>
     <string name="create_post">POST</string>
     <string name="post_title">Title</string>
     <string name="post_desc">Description</string>
+
+
     <string name="title_activity_reset_password">ResetPasswordActivity</string>
     <string name="btn_forgot_password">Forgot Password?</string>
     <string name="btn_reset_password">Reset Password</string>
@@ -77,62 +90,6 @@
     <string name="next_page">Next</string>
     <item name="visible" type="id" />
     <item name="masked" type="id" />
-    <string-array name="university_name">
-        <item>Sunway University</item>
-        <item>Sunway College</item>
-    </string-array>
-    <string-array name="academic_level">
-        <item>Pre-U</item>
-        <item>Diploma</item>
-        <item>Bachelor Degree</item>
-        <item>Masters</item>
-        <item>PhD</item>
-    </string-array>
 
-    <string-array name="pre_u_courses">
-        <item>Foundation in Science</item>
-        <item>Foundation in Arts</item>
-        <item>A-Level</item>
-        <item>Canadian Matriculation</item>
-        <item>Australian Matriculation</item>
-        <item>Monash University Foundation Year</item>
-    </string-array>
-    <string-array name="academic_school">
-        <item>Science And Technology</item>
-        <item>Business School</item>
-        <item>Mathematical Sciences</item>
-        <item>Hospitality</item>
-        <item>Arts</item>
-        <item>American Degree Transfer Program</item>
-        <item>Centre for English Language Studies</item>
-    </string-array>
-    <string-array name="sst_degree_courses">
-        <item>Computer Science</item>
-        <item>Information Systems</item>
-        <item>Information Systems (Business Analytics)</item>
-        <item>Information Technology</item>
-        <item>Information Technology (Computer Network And Security)</item>
-        <item>Mobile Computing With Entrepreneurship</item>
-        <item>Software Engineering</item>
-        <item>Biology with Psychology</item>
-        <item>Medical Biotechnology</item>
-        <item>Psychology</item>
-    </string-array>
-    <string-array name="intake_year">
-        <item>2000</item>
-        <item>2001</item>
-        <item>2002</item>
-        <item>2003</item>
-        <item>2004</item>
-        <item>2005</item>
-    </string-array>
-    <string-array name="intake_month">
-        <item>January</item>
-        <item>February</item>
-        <item>March</item>
-    </string-array>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
 

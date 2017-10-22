@@ -32,31 +32,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".UI.useractivities.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".UI.useractivities.SignUpActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ResetPasswordActivity" />
-        <activity android:name=".UserProfile" />
+        <activity android:name=".UI.useractivities.ResetPasswordActivity" />
+        <activity android:name=".UI.useractivities.UserProfile" />
         <activity
-            android:name=".SetUpPersonalProfile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".SetUpPersonalProfile2"
+            android:name=".UI.useractivities.SetUpPersonalProfile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SetUpPersonalProfile3"
+            android:name=".UI.useractivities.SetUpPersonalProfile2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AfterProfileSetUp"
+            android:name=".UI.useractivities.SetUpPersonalProfile3"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UI.useractivities.AfterProfileSetUp"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".HomePage" />
-        <activity android:name=".JoinGroupActivity" />
-        <activity android:name=".CreateGroupActivity" />
-        <activity android:name=".DiscussionGroupActivity" />
-        <activity android:name=".NewPost" />
-        <activity android:name=".PostDetailActivity"></activity>
+        <activity android:name=".UI.groupactivity.JoinGroupActivity" />
+        <activity android:name=".UI.groupactivity.CreateGroupActivity" />
+        <activity android:name=".UI.groupactivity.DiscussionGroupActivity" />
+
+        <activity android:name=".UI.groupactivity.MainJoinGroupActivity"></activity>
     </application>
 
 </manifest>
