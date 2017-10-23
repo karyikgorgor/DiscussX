@@ -2,6 +2,7 @@ package com.example.discussx.Models;
 
 import android.provider.ContactsContract;
 
+import com.example.discussx.UI.groupactivity.CreateGroupActivity;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -14,9 +15,10 @@ import java.util.ArrayList;
  */
 
 public class FirebaseHelper {
-    private DatabaseReference db;
-    private boolean saved;
-    private ArrayList<CreateGroup> createGroupArrayList = new ArrayList<>();
+    DatabaseReference db;
+    Boolean saved = null;
+    String groupNameX;
+    ArrayList<String> createGroupArrayList = new ArrayList<>();
 
     public FirebaseHelper (DatabaseReference db) {
         this.db = db;
@@ -27,7 +29,7 @@ public class FirebaseHelper {
             saved = false;
         } else {
             try {
-                db.child("dit").push().setValue(createGroup);
+                db.child("Discussion Group").push().setValue(createGroup);
             } catch (Exception e) {
                 e.printStackTrace();
                 saved = false;
@@ -39,13 +41,22 @@ public class FirebaseHelper {
     private void fetchData(DataSnapshot dataSnapshot) {
         createGroupArrayList.clear();
 
-        for (DataSnapshot ds: dataSnapshot.getChildren()) {
-            CreateGroup createGroup = ds.getValue(CreateGroup.class);
-            createGroupArrayList.add(createGroup);
+        if (dataSnapshot.getValue(String.class) != null) {
+            String key = dataSnapshot.getKey();
+
+            if (key.equals("Group Name")) {
+                groupNameX = dataSnapshot.getValue(String.class);
+                createGroupArrayList.add(groupNameX);
+            }
         }
     }
 
-    public ArrayList <CreateGroup> retrieve () {
+    public String returnGroupName () {
+        return groupNameX;
+    }
+
+
+    public ArrayList <String> retrieve () {
         db.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {

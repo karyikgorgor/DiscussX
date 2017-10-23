@@ -27,7 +27,7 @@ public class AfterProfileSetUp extends AppCompatActivity {
         joinGroupLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (AfterProfileSetUp.this, MainJoinGroupActivity.class);
+                Intent intent = new Intent (AfterProfileSetUp.this, JoinGroupActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }

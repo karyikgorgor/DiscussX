@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.example.discussx.Models.User;
 import com.example.discussx.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -158,8 +159,9 @@ public class SetUpPersonalProfile3 extends AppCompatActivity {
         String uni = getIntent().getExtras().getString("university");
         String academicSchool = spinnerAcademicSchool.getSelectedItem().toString();
         String course = spinnerCourse.getSelectedItem().toString();
-        UserProfileEdit userProfileEdit = new UserProfileEdit(userID, email, fullName, gender,dob,uni,academicSchool, course);
 
-        databaseProfile.child(userID).setValue(userProfileEdit);
+        User user = new User(userID, email, fullName, gender,dob,uni,academicSchool, course);
+
+        databaseProfile.child(userID).setValue(user);
     }
 }

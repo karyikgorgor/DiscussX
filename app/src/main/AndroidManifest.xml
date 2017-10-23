@@ -24,13 +24,7 @@
         <activity
             android:name=".OpenAppPage"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UI.useractivities.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -55,8 +49,16 @@
         <activity android:name=".UI.groupactivity.JoinGroupActivity" />
         <activity android:name=".UI.groupactivity.CreateGroupActivity" />
         <activity android:name=".UI.groupactivity.DiscussionGroupActivity" />
+        <activity android:name=".UI.groupactivity.MainJoinGroupActivity" />
+        <activity android:name=".UI.post_activities.PostActivity" />
+        <activity android:name=".UI.post_activities.PostActivityAssist">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity android:name=".UI.groupactivity.MainJoinGroupActivity"></activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".UI.post_activities.NavPostActivity"></activity>
     </application>
 
 </manifest>

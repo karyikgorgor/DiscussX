@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.discussx.Models.FirebaseHelper;
+import com.example.discussx.Models.Group;
+import com.example.discussx.Models.User;
 import com.example.discussx.R;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,6 +40,7 @@ public class CreateGroupActivity extends AppCompatActivity implements ValueEvent
     private String comments = "Comments";
     private FirebaseAuth mAuth;
     private static final String TAG = "CreateGroupActivity";
+
     private TextView showGroupName;
 
 
@@ -66,24 +70,30 @@ public class CreateGroupActivity extends AppCompatActivity implements ValueEvent
         btnCreateGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Group group = new Group ();
+                User user = new User ();
                 groupName = groupNameEditText.getText().toString();
+                group.setGroupName(groupName);
 
                 mFirebaseDatabase = FirebaseDatabase.getInstance();
-                databaseGroups = mFirebaseDatabase.getReference("Discussion Group").child(groupName);
+                databaseGroups = mFirebaseDatabase.getReference("Discussion Group").child(group.getGroupName());
 
                 mAuth = FirebaseAuth.getInstance();
-                FirebaseUser user = mAuth.getCurrentUser();
-                groupID = databaseGroups.push().getKey();
-                userID = user.getUid();
+                FirebaseUser userX = mAuth.getCurrentUser();
 
+                groupID = databaseGroups.push().getKey();
+                group.setGroupID(groupID);
+
+                userID = userX.getUid();
+                user.setUserID(userID);
 
                 groupIDRef = databaseGroups.child("Group ID");
                 creatorNameRef = databaseGroups.child("Group Creator");
                 memberRef = databaseGroups.child("Members").child("Member Name");
 
-                groupIDRef.setValue(groupID);
-                creatorNameRef.setValue(userID);
-                memberRef.setValue("LOLOL");
+                groupIDRef.push().setValue(group.getGroupID());
+                creatorNameRef.push().setValue(user.getUserID());
+                memberRef.push().setValue("");
 
 
             }
