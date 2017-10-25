@@ -58,7 +58,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UI.post_activities.NavPostActivity"></activity>
+        <activity android:name=".UI.post_activities.NavPostActivity" />
+        <activity android:name=".Models.comment_activities.CommentActivity"></activity>
     </application>
 
 </manifest>

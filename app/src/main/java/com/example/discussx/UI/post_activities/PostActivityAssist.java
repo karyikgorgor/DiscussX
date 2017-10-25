@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,14 +26,13 @@ public class PostActivityAssist extends AppCompatActivity {
 
     private RecyclerView mPostList;
     private DatabaseReference databasePost;
-    private TextView postTitleTextView, postDescTextView;
+    private TextView postTitleTextView, postDescTextView, postIDTextView;
+    private static final String TAG = "PostActivityAssist";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assist_post);
-
-
 
         databasePost = FirebaseDatabase.getInstance().getReference().child("Post");
 
@@ -55,8 +55,10 @@ public class PostActivityAssist extends AppCompatActivity {
 
             @Override
             protected void populateViewHolder(PostViewHolder viewHolder, Post model, int position) {
+
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setDesc(model.getDesc());
+                viewHolder.setPostID(model.getPostID());
 
             }
             @Override
@@ -69,14 +71,17 @@ public class PostActivityAssist extends AppCompatActivity {
                     public void onItemClick(View view, int position) {
                         postTitleTextView = view.findViewById(R.id.row_title);
                         postDescTextView = view.findViewById(R.id.row_desc);
+                        postIDTextView = view.findViewById(R.id.row_post_id);
 
                         String postTitle = postTitleTextView.getText().toString();
                         String postDesc = postDescTextView.getText().toString();
+                        String postID = postIDTextView.getText().toString();
 
                         Intent intent = new Intent(PostActivityAssist.this, NavPostActivity.class);
                         intent.putExtra("postTitle", postTitle);
                         intent.putExtra("postDesc", postDesc);
-                        Toast.makeText(PostActivityAssist.this, "You clicked "+ position, Toast.LENGTH_SHORT).show();
+                        intent.putExtra("postID", postID);
+                        Toast.makeText(PostActivityAssist.this, "You clicked "+ postID, Toast.LENGTH_SHORT).show();
 
                         startActivity(intent);
                     }
@@ -91,6 +96,8 @@ public class PostActivityAssist extends AppCompatActivity {
         };
         mPostList.setAdapter(firebaseRecyclerAdapter);
     }
+
+
 
 
 

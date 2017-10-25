@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import com.example.discussx.R;
 
+import org.w3c.dom.Text;
+
 /**
  * Created by IMCKY on 24-Oct-17.
  */
@@ -41,6 +43,11 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     public void setDesc (String desc) {
         TextView post_desc = mView.findViewById(R.id.row_desc);
         post_desc.setText(desc);
+    }
+
+    public void setPostID (String postID) {
+        TextView post_ID = mView.findViewById(R.id.row_post_id);
+        post_ID.setText(postID);
     }
 
 

@@ -64,7 +64,11 @@
     <string name="create_post">POST</string>
     <string name="post_title">Title</string>
     <string name="post_desc">Description</string>
+    <string name = "post_id">Post ID</string>
 
+
+    <string name = "comment">Comment</string>
+    <string name = "comment_btn">COMMENT</string>
 
     <string name="title_activity_reset_password">ResetPasswordActivity</string>
     <string name="btn_forgot_password">Forgot Password?</string>

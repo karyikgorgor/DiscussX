@@ -91,9 +91,9 @@ public class CreateGroupActivity extends AppCompatActivity implements ValueEvent
                 creatorNameRef = databaseGroups.child("Group Creator");
                 memberRef = databaseGroups.child("Members").child("Member Name");
 
-                groupIDRef.push().setValue(group.getGroupID());
-                creatorNameRef.push().setValue(user.getUserID());
-                memberRef.push().setValue("");
+                groupIDRef.setValue(group.getGroupID());
+                creatorNameRef.setValue(user.getUserID());
+                memberRef.setValue("");
 
 
             }

@@ -2,6 +2,7 @@ package com.example.discussx.UI.post_activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,8 +22,13 @@ public class PostActivity extends AppCompatActivity {
     private EditText mPostTitle;
     private EditText mPostDesc;
     private Button btnPost;
-
+    private String postID;
+    private String comment = "";
     private DatabaseReference postDatabase;
+
+    private DatabaseReference titleRef;
+    private DatabaseReference descRef;
+    private DatabaseReference commentRef;
 
 
     private ProgressDialog mProgress;
@@ -57,10 +63,14 @@ public class PostActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(postTitleVal) && !TextUtils.isEmpty(postDescVal)) {
             mProgress.show();
 
-            postDatabase = FirebaseDatabase.getInstance().getReference().child("Post");;
-            DatabaseReference newPost = postDatabase.push();
-            newPost.child("title").setValue(postTitleVal);
-            newPost.child("desc").setValue(postDescVal);
+            postDatabase = FirebaseDatabase.getInstance().getReference("Post");
+            postID = postDatabase.push().getKey();
+            Post post = new Post (postTitleVal, postDescVal, postID, comment);
+
+         //   newPost.child("title").setValue(postTitleVal);
+           // newPost.child("desc").setValue(postDescVal);
+
+            postDatabase.child(postID).setValue(post);
 
             mProgress.dismiss();
             Intent intent = new Intent(PostActivity.this, PostActivityAssist.class);
